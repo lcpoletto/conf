@@ -1,0 +1,176 @@
+Software text terminal -> tty -> /dev/tty#
+GUI terminals are pseudo terminals based on client/server interaction -> /dev/pts#
+alt+f1 -> GUI
+  alt+f2 -> tty2
+  alt+f3 -> tty3
+  ...
+getty (mingetty) -> only exists for login
+  on X environments it's made by xdm/gdm/kdm -> display managers
+ctrl+l -> clear screen
+not all process are attached to terminals, ps -ef shows everything
+compgen -b -> list all builtin commands
+  help <command> to show help about one specific command
+external commands -> /bin/* /usr/bin/*
+alias -> show current configured aliases
+\ -> ignore configured alias for the command, example: \ls -l
+.bashrc -> bash Run Control
+precedence of commands:
+  1. aliases
+  2. functions
+  3. builtins
+  4. externals
+type <command> show which one is higher in precedence
+  type -a <command> show all available commands with that name
+typeset -f / declare -f -> show all functions
+which <command> does not show builtins and functions
+whereis <command> -> show all related files for the command
+unset -> undefine a function
+# in prompt usually means the user has root privileges
+if you change the user uid to 0 on /etc/passwd, that user will be root
+who -> shows the real user id
+whoami -> shows effective user id
+su - -> actually login as the specified user
+  su -> just impersonate the user, ignoring .bashrc, profiles and so on
+visudo is required to update /etc/sudoers file
+  will show syntax errors when you close it
+historically, sbin folders were meant to store pre-compiled tools that didn't rely on libraries to run, now it's mainly for commands meant to run by root user only
+data block of directory:
+   ______________
+  |  __________  | ownership
+  | | filename | | creation timestamp
+  |  ----------  | modification timestamp
+  |      |       | file modes
+  |   _______    | pointers to data
+  |  | inode |   |
+  |   -------    |
+   --------------
+fsck -> check for inodes not attached to file names and send to lost+found folders
+ls -il -> shows inodes of files
+mkdir -p -> create a tree of subdirectories
+ctrl+d -> send EOF commands
+ls -il file[12] -> range of data, this example will show file 1 to 2
+ls -lL -> show permissions to the referenced files of symbolic links instead of the permissions of the link
+links:
+  regular file: filename -> inode -> data
+  symbolic link: linkname -> inode of link -> path to file -> data
+  hard link -> linkname -> inode of file -> data
+when you remove one file it removes the filename pointer to the inode, if there is no other filename pointing to that same inode, it's freed to be used again
+sudo -l -u <username> -> list all commands you can run as sudo
+chattr +u <filename> -> will not remove file contents when you do "rm", making it easier to recover to accidental deletes
+chattr +i <filename> -> make the file immutable (no one will be able to remove it or change it)
+lsattr -> display file attributes
+file permissions:
+  r w x  r w x  r w x -> owner group everyone
+  - - -  - - -  - - -
+  4 2 1  4 2 1  4 2 1
+  you need 'x' permission to be able to read inode information from directories
+    'w' only permission on a directory is useless
+  you can run scripts without 'x' permission by issuing: bash <filename> or source <filename>
+cp -b -> creates one generation backup file when overriding
+cd ~username -> goes to that user home dir
+mkdir {dev,prod} -> create multiple folders (in this case dev and prod)
+touch {code,data}{1..3} -> will create 6 files (code1..3 and data1..3)
+when you copy hard links they are actually converted to new files
+mv code2{,.v2} -> mv code2 + mv code2.v2
+format specifiers on commands always use % formatting
+whatis <command> -> display small help for the command
+man sections:
+  1. commands
+  5. configuration files
+  8. administrative tools
+man -k <command> -> show all manual sections for the command, similar to whatis result
+man -a <command> -> show all manual entries for the command
+you can run vim like shortcuts inside manual pages:
+  :e -> open file
+  :n -> next file
+  :p -> previous file
+  :q -> close man
+  :d -> close file
+uname -n -> display hostname
+chmod:
+  u+x -> owner + execute
+  ug+x -> owner and group + execute
+  o+x -> other + execute
+  o= -> remove all other permissions
+  o=rx -> other will have rx permissions
+  u+s -> applies switch uid to file
+umask -> mask applied to default file permissions when creating them
+  if umask is 0002 then default file permission will be 664 -> 666 - 0002 = 664
+  first digit of umask is the file permission indicator:
+    4 (sS) -> switch uid
+    2 (sS) -> switch gid
+    1 (t) -> sticky bit -> any user can create and modify files on the directory, but only root can delete it
+  default umasks are 0666 for files and 0777 for directories
+chown <user>:<group> <filename> -> change the ownership of file to <user> and <group>, if no group is specified ownership will be default group of user
+a '+' sign in the end of permissions means that there is ACL applied to it
+  getfacl <file> -> shows ACL applied to file
+on a 'find -exec' command, the command passed to exec will be executed by replacing {} with the current found item
+stdin   -> keyboard       -> < or <<    -> fd0
+stdout  -> monitor screen -> > or >>    -> fd1
+stderr  -> monitor screen -> 2> or 2>>  -> fd2
+/proc/<pid>/maps -> have all memory locations and files open by process
+lsof -> list open files by process
+<command> > output 2>&1 -> redirect stderr to stdout
+  same as <command> >& output
+when using pipes, the output of the first command goes to a temp file and the stdin of the next command reads from it
+named pipes use actual files instead of temp, check mkfifo command for named pipes
+tr -> replace all occurrences of the argument 1 to arg 2
+bash assumes a variable is numeric if it's all numbers and then allows numeric operations with it
+declare -p <var> -> print variable info
+declare -i <var>=<#> -> declare a numeric variable
+  if you assign a non-numeric value to a numeric variable it becomes 0
+declare -r <var>=<value> -> declare a read-only variable (constant)
+  the only way to remove this variable is by closing the process
+export -> export variable as an environment variable (will be copied to child processes)
+env -> shows all exported variabled
+declare -x <var>=<value> -> same thing as export
+when you export constants, it will not be constant on the child process
+variabled passed to children are copies, each process has it's own environment
+set -o -> show shell variables (to change shell behavior)
+echo $? -> print status code of last finished process
+compound commands:
+  ; -> don't care about status
+  && -> only execute next command on success
+  || -> only execute next command on non-success
+if I don't want output -> redirect to /dev/null
+<command> << marker -> will process stdin untill it receives the 'marker' word, replaces EOF delimiter to 'marker'
+awk:
+  $0 -> whole line
+  NR -> number of records
+when you create a user, /etc/skel is copied to the newly created home directory
+the first process of the OS (scheduler) has pid 0
+run process in the background -> & in the end
+ctrl + z -> stops process
+  fg -> brings to foreground
+  bg -> sends to background
+nice command changes the priority of processes: the higher the number, the lower priority
+in bash $$ is replaced by the process pid
+run levels:
+  0. halt
+  1. maintenance
+  2. maintenance no NFS
+  3. maintenance no NFS
+  4. maintenance no NFS
+  5. graphic
+  6. reboot
+systemd -> always use systemctl to control it
+  systemctl -t help -> show available units
+  /etc/systemd/system -> units configuration enabled
+  /usr/lib/systemd/system -> copy these to /etc/systemd/system to enable them
+  systemctl show <servicename> -> display service configuration
+  systemctl list-units --type=service -> list all services on the box
+log levels:
+  1. emerg
+  2. crit
+  3. err
+  4. warning
+  5. notice
+  6. info
+  7. debug
+  inside syslog.conf file, if there is a '-' before the file name means to buffer contents before writing to files
+at jobs are fired once -> at now +5 min <command/job>
+  atq shows queue
+cron jobs on timeframes -> crontab -e to edit jobs
+anacron jobs always run -> if the system is not available they will run as soon as it becomes back up
+crontab -l -> list cron jobs
+crontab -eu <username> -> edit crontab for user

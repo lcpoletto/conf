@@ -114,6 +114,37 @@ Show #$good, ilvl69, small
 	Width <= 1
 
     
+#----------------------------------------------------
+# 060d # BEST BASES
+#----------------------------------------------------
+Show	#Body Armours
+	BaseType "Glorious Plate" "Assassin's Garb" "Vaal Regalia" "Carnal Armour" "Saintly Chainmail" "Triumphant Lamellar"
+	Rarity Rare
+    
+Show	#Helmets
+	BaseType "Eternal Burgonet" "Lion Pelt" "Hubris Circlet" "Deicide Mask" "Praetor Crown" "Nightmare Bascinet"
+	Rarity Rare
+    
+Show	#Gloves
+	BaseType "Titan Gauntlets" "Slink Gloves" "Sorcerer Gloves" "Murder Mitts" "Crusader Gloves" "Dragonscale Gauntlets"
+    Rarity Rare
+    
+Show	#Boots
+	BaseType "Titan Greaves" "Slink Boots" "Sorcerer Boots" "Murder Boots" "Crusader Boots" "Dragonscale Boots"
+	Rarity Rare
+    
+Show	#Shields
+	BaseType "Pinnacle Tower Shield" "Imperial Buckler" "Titanium Spirit Shield" "Supreme Spiked Shield" "Archon Kite Shield" "Elegant Round Shield"
+	Rarity Rare
+
+Show	#1H Weapons
+	BaseType "Runic Hatchet" "Tiger Hook" "Dragoon Sword" "Jewelled Foil" "Vaal Rapier" "Corsair Sword" "Sai" "Ambusher"  "Platinum Kris" "Behemoth Mace" "Gemini Claw" "Great White Claw" "Imperial Claw" "Terror Claw" "Sambar Sceptre" "Profane Wand" "Imbued Wand" "Opal Wand"
+	Rarity Rare
+
+Show	#2H Weapons
+	BaseType "Coronal Maul" "Piledriver" "Maraketh Bow" "Harbinger Bow" "Fleshripper" "Vaal Axe" "Exquisite Blade" "Reaver Sword"
+	Rarity Rare
+    
 #------------------------------------------------------------------------
 # 0702 # CHROMATIC ORB RECIPE ITEMS
 #------------------------------------------------------------------------

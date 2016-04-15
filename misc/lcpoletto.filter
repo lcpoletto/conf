@@ -86,6 +86,47 @@ Show
     Sockets 6
     PlayAlertSound 1 300
     
+#------------------------------------------------------------------------
+# Section: 0600 # RARE ITEM HIGHLIGHTING
+#------------------------------------------------------------------------
+#----------------------------------------------------
+# 060b # RARE RINGS, AMULETS, JEWELS, BELTS
+#----------------------------------------------------
+Show
+	Class Rings Amulets Belts Jewel
+	Rarity Rare
+
+#----------------------------------------------------
+# 060c # DROP LEVEL 69+ ITEMS ARE ALWAYS PRIORITIZED RARES
+#----------------------------------------------------
+Show #$good, ilvl69, small
+	Rarity Rare
+	DropLevel >= 69
+	ItemLevel >= 65
+	Height <= 2
+	Width <= 2
+
+Show #$good, ilvl69, small
+	Rarity Rare
+	DropLevel >= 69
+	ItemLevel >= 65
+	Height <= 3
+	Width <= 1
+
+    
+#------------------------------------------------------------------------
+# 0702 # CHROMATIC ORB RECIPE ITEMS
+#------------------------------------------------------------------------
+Show
+	SocketGroup RGB
+	Height <= 2
+	Width <= 2
+
+Show
+	SocketGroup RGB
+	Height <= 3
+	Width <= 1
+    
 #----------------------------------------------------
 # 9998 # Show less valuable items not captured above
 #----------------------------------------------------    
@@ -100,11 +141,14 @@ Show
     SetBackgroundColor 0 0 0 180
 
 Show
-    Class "Quest Items" Maps "Map Fragments" Jewel
+    Class "Quest Items" Maps "Map Fragments" Jewel "Utility Flasks"
 
 Show 
     Class Gem Flask
     Quality > 1
+
+Show
+    Quality = 20
 
 #----------------------------------------------------
 # 9999 # HIDE REMAINING ITEMS

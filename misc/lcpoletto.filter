@@ -79,12 +79,12 @@ Show
 # 5-links (6 links are handled at the start)
 Show
 	LinkedSockets 5
-	PlayAlertSound 1 300
+	PlayAlertSound 8 300
 
 # 6-Sockets
 Show
     Sockets 6
-    PlayAlertSound 1 300
+    PlayAlertSound 8 300
     
 #------------------------------------------------------------------------
 # Section: 0600 # RARE ITEM HIGHLIGHTING
@@ -120,51 +120,150 @@ Show #$good, ilvl69, small
 Show	#Body Armours
 	BaseType "Glorious Plate" "Assassin's Garb" "Vaal Regalia" "Carnal Armour" "Saintly Chainmail" "Triumphant Lamellar"
 	Rarity Rare
+	PlayAlertSound 8 300
     
 Show	#Helmets
 	BaseType "Eternal Burgonet" "Lion Pelt" "Hubris Circlet" "Deicide Mask" "Praetor Crown" "Nightmare Bascinet"
 	Rarity Rare
+	PlayAlertSound 8 300
     
 Show	#Gloves
 	BaseType "Titan Gauntlets" "Slink Gloves" "Sorcerer Gloves" "Murder Mitts" "Crusader Gloves" "Dragonscale Gauntlets"
     Rarity Rare
+	PlayAlertSound 8 300
     
 Show	#Boots
 	BaseType "Titan Greaves" "Slink Boots" "Sorcerer Boots" "Murder Boots" "Crusader Boots" "Dragonscale Boots"
 	Rarity Rare
+	PlayAlertSound 8 300
     
 Show	#Shields
 	BaseType "Pinnacle Tower Shield" "Imperial Buckler" "Titanium Spirit Shield" "Supreme Spiked Shield" "Archon Kite Shield" "Elegant Round Shield"
 	Rarity Rare
+	PlayAlertSound 8 300
 
 Show	#1H Weapons
 	BaseType "Runic Hatchet" "Tiger Hook" "Dragoon Sword" "Jewelled Foil" "Vaal Rapier" "Corsair Sword" "Sai" "Ambusher"  "Platinum Kris" "Behemoth Mace" "Gemini Claw" "Great White Claw" "Imperial Claw" "Terror Claw" "Sambar Sceptre" "Profane Wand" "Imbued Wand" "Opal Wand"
 	Rarity Rare
+	PlayAlertSound 8 300
 
 Show	#2H Weapons
 	BaseType "Coronal Maul" "Piledriver" "Maraketh Bow" "Harbinger Bow" "Fleshripper" "Vaal Axe" "Exquisite Blade" "Reaver Sword"
 	Rarity Rare
+	PlayAlertSound 8 300
     
 #------------------------------------------------------------------------
 # 0702 # CHROMATIC ORB RECIPE ITEMS
 #------------------------------------------------------------------------
-Show
-	SocketGroup RGB
-	Height <= 2
-	Width <= 2
+#Show
+#	SocketGroup RGB
+#	Height <= 23
+#	Width <= 2
 
 Show
 	SocketGroup RGB
-	Height <= 3
-	Width <= 1
+#	Height <= 3
+#	Width <= 1
+	
+#------------------------------------------------------------------------
+# 0950 # MAP UPGRADES
+#------------------------------------------------------------------------
+Show
+	Class Map
+	DropLevel >= 80
+	ItemLevel = 82
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 79
+	ItemLevel = 81
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 78
+	ItemLevel = 80
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 77
+	ItemLevel = 79
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 76
+	ItemLevel = 78
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 75
+	ItemLevel = 77
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 74
+	ItemLevel = 76
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 73
+	ItemLevel = 75
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 72
+	ItemLevel = 74
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 71
+	ItemLevel = 73
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 70
+	ItemLevel = 72
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 69
+	ItemLevel = 71
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel >= 68
+	ItemLevel = 70
+	PlayAlertSound 4 300
+	
+Show
+	Class Map
+	DropLevel >= 67
+	ItemLevel = 69
+	PlayAlertSound 4 300
+
+Show
+	Class Map
+	DropLevel = 62
+	ItemLevel <= 68
+	PlayAlertSound 4 300
     
 #----------------------------------------------------
 # 9998 # Show less valuable items not captured above
 #----------------------------------------------------    
 Show 
     Class Currency 
-    SetTextColor 170 158 130 180
-    SetBackgroundColor 0 0 0 180
+    SetFontSize 24
     
 Show 
     Class "Divination Card"
@@ -172,7 +271,10 @@ Show
     SetBackgroundColor 0 0 0 180
 
 Show
-    Class "Quest Items" Maps "Map Fragments" Jewel "Utility Flasks"
+    Class "Quest Items" Maps "Map Fragments" Jewel "Utility Flasks" 
+	
+Show
+BaseType "Treasure Key" "Golden Key" "Silver Key" "Bane of the Loyal" "Orb of Elemental Essence" "Portal Shredder" "Rod of Detonation" "Sand of Eternity" "Heart of the Gargoyle" "Cube Of Absorption" "Cogs of Disruption"
 
 Show 
     Class Gem Flask
@@ -184,6 +286,12 @@ Show
 #----------------------------------------------------
 # 9999 # HIDE REMAINING ITEMS
 #----------------------------------------------------
+Show
+    Class Gem
+	SetTextColor 27 162 155 200
+	SetBackgroundColor 0 0 0 200
+    SetFontSize 18
+	
 Show 
     Rarity Normal
     SetTextColor 200 200 200 150

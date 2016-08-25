@@ -118,7 +118,7 @@ Show #$good, ilvl69, small
 # 060d # BEST BASES
 #----------------------------------------------------
 Show	#Body Armours
-	BaseType "Glorious Plate" "Assassin's Garb" "Vaal Regalia" "Carnal Armour" "Saintly Chainmail" "Triumphant Lamellar"
+	BaseType "Glorious Plate" "Assassin's Garb" "Vaal Regalia" "Carnal Armour" "Saintly Chainmail" "Triumphant Lamellar" "Astral Plate"
 	Rarity Rare
 	PlayAlertSound 8 300
     
@@ -126,16 +126,28 @@ Show	#Helmets
 	BaseType "Eternal Burgonet" "Lion Pelt" "Hubris Circlet" "Deicide Mask" "Praetor Crown" "Nightmare Bascinet"
 	Rarity Rare
 	PlayAlertSound 8 300
+	
+Show
+	BaseType "Royal Burgonet" "Sinner Tricorne" "Silken Hood" "Ezomyte Burgonet" "Mind Cage" "Pig-Faced Bascinet" "Fluted Bascinet" "Prophet Crown" "Vaal Mask"
+	Rarity Rare
     
 Show	#Gloves
 	BaseType "Titan Gauntlets" "Slink Gloves" "Sorcerer Gloves" "Murder Mitts" "Crusader Gloves" "Dragonscale Gauntlets"
     Rarity Rare
 	PlayAlertSound 8 300
+	
+Show
+	BaseType "Vaal Gauntlets" "Stealth Gloves" "Arcanist Gloves" "Hydrascale Gauntlets" "Legion Gloves" "Assassin's Mitts"
+	Rarity Rare
     
 Show	#Boots
 	BaseType "Titan Greaves" "Slink Boots" "Sorcerer Boots" "Murder Boots" "Crusader Boots" "Dragonscale Boots"
 	Rarity Rare
 	PlayAlertSound 8 300
+
+Show	
+	BaseType "Vaal Greaves" "Stealth Boots" "Arcanist Slippers" "Hydrascale Boots" "Legion Boots" "Assassin's Boots"
+	Rarity Rare
     
 Show	#Shields
 	BaseType "Pinnacle Tower Shield" "Imperial Buckler" "Titanium Spirit Shield" "Supreme Spiked Shield" "Archon Kite Shield" "Elegant Round Shield"
@@ -157,7 +169,7 @@ Show	#2H Weapons
 #------------------------------------------------------------------------
 #Show
 #	SocketGroup RGB
-#	Height <= 23
+#	Height <= 2
 #	Width <= 2
 
 Show
@@ -258,9 +270,90 @@ Show
 	ItemLevel <= 68
 	PlayAlertSound 4 300
     
+#------------------------------------------------------------------------
+# 0960 # LEVELING
+#------------------------------------------------------------------------
+
+Show
+	Class Flask
+	ItemLevel < 12
+	BaseType "Small" "Medium" "Large"
+
+Show
+	Class Flask
+	ItemLevel < 18
+	BaseType "Greater"
+	
+Show
+	Class Flask
+	ItemLevel < 24
+	BaseType "Grand"
+
+Show
+	Class Flask
+	ItemLevel < 30
+	BaseType "Giant"
+	
+Show
+	Class Flask
+	ItemLevel < 36
+	BaseType "Colossal"
+	
+Show
+	Class Flask
+	ItemLevel < 42
+	BaseType "Sacred"
+	
+Show
+	Class Flask
+	ItemLevel < 66
+	BaseType "Divine" "Eternal" "Hallowed"
+	
+Show
+	ItemLevel < 66
+	Rarity Magic
+	Height <= 2
+	Width <= 2
+	LinkedSockets 4
+
+Show
+	ItemLevel < 66
+	Rarity Magic
+	Height <= 3
+	Width <= 1
+	LinkedSockets 3
+	
+Show
+	ItemLevel < 55
+	Height <= 3
+	Width <= 2
+	LinkedSockets 4
+
+Show
+	ItemLevel < 55
+	Height <= 3
+	Width <= 1
+	LinkedSockets 3
+	
+Show
+	ItemLevel < 66
+	Rarity Rare Unique
+
+#----------------------------------------------------
+# 9950 # Items to alch
+#----------------------------------------------------    	
+Show
+	Class Rings Amulets Belts
+	BaseType "Turquoise" "Leather" "Rustic" "Diamond" "Onyx" "Agate" "Citrine" "Two-Stone"
+	Rarity Normal
+	ItemLevel > 69
+
 #----------------------------------------------------
 # 9998 # Show less valuable items not captured above
-#----------------------------------------------------    
+#----------------------------------------------------
+Show
+	BaseType "Silver Coin"
+	
 Show 
     Class Currency 
     SetFontSize 24
@@ -274,7 +367,7 @@ Show
     Class "Quest Items" Maps "Map Fragments" Jewel "Utility Flasks" 
 	
 Show
-BaseType "Treasure Key" "Golden Key" "Silver Key" "Bane of the Loyal" "Orb of Elemental Essence" "Portal Shredder" "Rod of Detonation" "Sand of Eternity" "Heart of the Gargoyle" "Cube Of Absorption" "Cogs of Disruption"
+	BaseType "Treasure Key" "Golden Key" "Silver Key" "Bane of the Loyal" "Orb of Elemental Essence" "Portal Shredder" "Rod of Detonation" "Sand of Eternity" "Heart of the Gargoyle" "Cube Of Absorption" "Cogs of Disruption"
 
 Show 
     Class Gem Flask
@@ -288,32 +381,32 @@ Show
 #----------------------------------------------------
 Show
     Class Gem
-	SetTextColor 27 162 155 200
-	SetBackgroundColor 0 0 0 200
+ 	SetTextColor 27 162 155 215
+	SetBackgroundColor 0 0 0 215
     SetFontSize 18
 	
 Show 
     Rarity Normal
-    SetTextColor 200 200 200 150
-    SetBackgroundColor 0 0 0 150
+    SetTextColor 200 200 200 215
+    SetBackgroundColor 0 0 0 215
     SetFontSize 18
 
 Show 
     Rarity Magic
-    SetTextColor 136 136 255 150
-    SetBackgroundColor 0 0 0 150
+    SetTextColor 136 136 255 215
+    SetBackgroundColor 0 0 0 215
     SetFontSize 18
 
 Show 
     Rarity Rare
-    SetTextColor 255 255 119 150
-    SetBackgroundColor 0 0 0 150
+    SetTextColor 255 255 119 215
+    SetBackgroundColor 0 0 0 215
     SetFontSize 18
 
 Show 
     Rarity Unique
-    SetTextColor 175 96 37 150
-    SetBackgroundColor 0 0 0 150
+    SetTextColor 175 96 37 215
+    SetBackgroundColor 0 0 0 215
     SetFontSize 18
 
 Show

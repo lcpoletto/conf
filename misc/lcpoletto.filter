@@ -304,6 +304,63 @@ Show
 #------------------------------------------------------------------------
 # 0960 # LEVELING
 #------------------------------------------------------------------------
+Show
+    BaseType "Driftwood Club" "Driftwood Sceptre" "Driftwood Maul" "Rusted Hatchet" "Rusted Sword" "Rusted Spike" "Corroded Blade"
+    ItemLevel < 5
+    Rarity Magic Rare
+
+Show
+    BaseType "Tribal Club" "Darkwood Sceptre" "Tribal Maul" "Jade Hatchet" "Stone Axe" "Copper Sword" "Whalebone Rapier" "Longsword"
+    ItemLevel < 10
+    Rarity Magic Rare
+    
+Show
+    BaseType "Spiked Club" "Bronze Sceptre" "Mallet" "Boarding Axe" "Jade Chopper" "Sabre" "Battered Foil" "Bastard Sword"
+    ItemLevel < 15
+    Rarity Magic Rare
+
+Show
+    BaseType "Stone Hammer" "Quartz Sceptre" "Sledgehammer" "Cleaver" "Woodsplitter" "Broad Sword" "Basket Rapier" "Two-Handed Sword"
+    ItemLevel < 20
+    Rarity Magic Rare
+ 
+Show
+    BaseType "War Hammer" "Iron Sceptre" "Poleaxe" "War Sword"
+    ItemLevel < 24
+    Rarity Magic Rare
+Show
+    BaseType "Jagged Maul" "Double Axe" "Ancient Sword" "Jagged Foil" "Etched Greatsword"
+    ItemLevel < 27
+    Rarity Magic Rare
+ 
+Show
+    BaseType "Dream Mace" "Wyrm Mace" "Ochre Sceptre" "Morning Star" "Fright Maul" "Brass Maul" "Arming Axe" "Gilded Axe" "Elegant Sword" "Elegant Foil" "Ornate Sword"
+    ItemLevel < 35
+    Rarity Magic Rare
+
+Show
+    BaseType "Barbed Club" "Etched Hatchet" "Timber Axe" "Cutlass" "Smallsword" "Wyrmbone Rapier" "Spectral Sword" "Curved Blade" "Footman Sword"
+    ItemLevel < 44
+    Rarity Magic Rare
+    
+Show
+    BaseType "Grinning Fetish" "Great Mallet" "Tomahawk" "Headsman Axe" "Estoc"
+    ItemLevel < 47
+    Rarity Magic Rare
+    
+Show
+    BaseType "Flanged Mace" "Battle Hammer" "Phantom Mace" "Blood Sceptre" "Steelhead" "Spiny Maul" "Dread Maul" "Chest Splitter" "Labrys" "Noble Axe" "Graceful Sword" "Serrated Foil" "Fancy Foil" "Tiger Sword"
+    ItemLevel < 56
+    Rarity Magic Rare
+
+Show
+    BaseType "Legion Hammer" "Tenderizer" "Dragon Mace" "Karui Sceptre" "Solar Maul" "Colossus Mallet" "Meatgrinder" "Engraved Hatchet" "Sundering Axe" "Ezomyte Axe" "Dragonbone Rapier" "Reaver Sword"
+    ItemLevel < 64
+    Rarity Magic Rare
+    
+#------------------------------------------------------------------------
+# 09601 # LEVELING FLASKS
+#------------------------------------------------------------------------
 
 Show
     Class Flask
@@ -387,7 +444,7 @@ Show
     
 Show 
     Class Currency 
-    SetFontSize 24
+    SetFontSize 26
     
 Show 
     Class "Divination Card"

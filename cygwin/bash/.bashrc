@@ -25,8 +25,6 @@
 
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
-# Start TMUX when starting Cygwin
-[[ -z "$TMUX" ]] && exec tmux
 
 # Shell Options
 #
@@ -199,11 +197,8 @@
 # 
 # alias cd=cd_func
 
-proxy=http://192.168.90.245:8080
-export http_proxy=$proxy
-export HTTP_PROXY=$proxy
-export https_proxy=$proxy
-export HTTPS_PROXY=$proxy
+# Start TMUX when starting Cygwin
+# [[ -z "$TMUX" ]] && exec tmux
 
 # Original Cygwin PS1: export PS1="\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
 export TERM=xterm-256color
@@ -219,12 +214,3 @@ export PATH=$PATH:"$JAVA_HOME/bin":"$MAVEN_HOME/bin"
 
 alias vi=vim
 alias ls="ls --color"
-
-#printf "\033k$(hostname -s)\033\\"
-
-#ssh() {
-    #command ssh -t "$@" 'bash -l -c "printf \""\\033k$(hostname -s)\\033\\\\\"""; bash -l'
-    #command ssh "$@"
-    # Reset TMUX window name to current hostname
-    #printf "\033k$(hostname -s)\033\\"
-#}

@@ -169,6 +169,15 @@ Show    #2H Weapons
     PlayAlertSound 8 300
     
 #------------------------------------------------------------------------
+# 0980 # SPECIFIC ITEMS
+#------------------------------------------------------------------------
+Show
+    BaseType "Tiger Hook" "Dragoon Sword" "Jewelled Foil" "Vaal Rapier" "Corsair Sword" "Eternal Sword" "Spiraled Foil" "Pecoraro" "Courtesan Sword"
+    ItemLevel > 59
+    Rarity Rare
+    PlayAlertSound 8 300
+    
+#------------------------------------------------------------------------
 # 0702 # CHROMATIC ORB RECIPE ITEMS
 #------------------------------------------------------------------------
 #Show

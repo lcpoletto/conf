@@ -440,11 +440,10 @@ Show
 # 9998 # Show less valuable items not captured above
 #----------------------------------------------------
 Show
-    BaseType "Silver Coin"
+    BaseType "Silver Coin" "Splinter"
     
 Show 
     Class Currency 
-    SetFontSize 26
     
 Show 
     Class "Divination Card"
@@ -474,29 +473,32 @@ Show
     SetBackgroundColor 0 0 0 215
     SetFontSize 18
     
-Show 
-    Rarity Normal
-    SetTextColor 200 200 200 215
-    SetBackgroundColor 0 0 0 215
-    SetFontSize 18
+#Show 
+#    Rarity Normal
+#    SetTextColor 200 200 200 115
+#    SetBackgroundColor 0 0 0 115
+#    SetFontSize 18
 
-Show 
-    Rarity Magic
-    SetTextColor 136 136 255 215
-    SetBackgroundColor 0 0 0 215
-    SetFontSize 18
+#Show 
+#    Rarity Magic
+#    SetTextColor 136 136 255 115
+#    SetBackgroundColor 0 0 0 115
+#    SetFontSize 18
 
 Show 
     Rarity Rare
-    SetTextColor 255 255 119 215
-    SetBackgroundColor 0 0 0 215
+    SetTextColor 255 255 119 115
+    SetBackgroundColor 0 0 0 115
     SetFontSize 18
 
 #Show 
 #    Rarity Unique
-#    SetTextColor 175 96 37 215
-#    SetBackgroundColor 0 0 0 215
+#    SetTextColor 175 96 37 115
+#    SetBackgroundColor 0 0 0 115
 #    SetFontSize 18
 
-Show
-    SetFontSize 18
+#Show
+#    SetFontSize 18
+
+# Hide everything else not captured
+Hide

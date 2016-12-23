@@ -425,7 +425,7 @@ Show
     
 Show
     ItemLevel < 66
-    Rarity Rare Unique
+    Rarity Rare
 
 #----------------------------------------------------
 # 9950 # Items to alch
@@ -440,7 +440,7 @@ Show
 # 9998 # Show less valuable items not captured above
 #----------------------------------------------------
 Show
-    BaseType "Silver Coin" "Splinter"
+    BaseType "Silver Coin" "Splinter" "Offering to the Goddess"
     
 Show 
     Class Currency 
@@ -449,7 +449,7 @@ Show
     Class "Divination Card"
 
 Show
-    Class "Quest Items" Maps "Map Fragments" Jewel "Utility Flasks" 
+    Class "Quest Items" Maps "Map Fragments" Jewel "Utility Flasks" "Labyrinth"
     
 Show
     BaseType "Treasure Key" "Golden Key" "Silver Key" "Bane of the Loyal" "Orb of Elemental Dispersion" "Portal Shredder" "Rod of Detonation" "Sand of Eternity" "Heart of the Gargoyle" "Cube Of Absorption" "Cogs of Disruption"
@@ -487,8 +487,8 @@ Show
 
 Show 
     Rarity Rare
-    SetTextColor 255 255 119 115
-    SetBackgroundColor 0 0 0 115
+    SetTextColor 255 255 119 215
+    SetBackgroundColor 0 0 0 215
     SetFontSize 18
 
 #Show 
@@ -497,6 +497,7 @@ Show
 #    SetBackgroundColor 0 0 0 115
 #    SetFontSize 18
 
+# Show everything else smaller
 #Show
 #    SetFontSize 18
 

@@ -432,8 +432,14 @@ Show
 #----------------------------------------------------        
 Show
     Class Rings Amulets Belts
-    BaseType "Turquoise" "Leather" "Rustic" "Diamond" "Onyx" "Agate" "Citrine" "Two-Stone" "Marble"
+    BaseType "Turquoise" "Leather" "Rustic" "Diamond" "Onyx" "Agate" "Citrine" "Two-Stone" "Marble" "Opal" "Steel"
     Rarity Normal
+    ItemLevel > 69
+
+Show
+    Class Boots Gloves Amulets Rings Belts
+    BaseType "Two-Toned" "Spiked" "Gripped" "Fingerless" "Marble" "Opal" "Steel" "Vanguard" "Crystal"
+    Rarity Normal Magic
     ItemLevel > 69
 
 #----------------------------------------------------

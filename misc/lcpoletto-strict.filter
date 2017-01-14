@@ -47,7 +47,7 @@ Show
     PlayAlertSound 1 300
     
 Show
-    BaseType "Silver Coin" "Splinter" "Offering to the Goddess"
+    BaseType "Silver Coin" "Splinter of" "Offering to the Goddess"
     #SetFontSize 36
     SetBorderColor 200 200 200 220
     

@@ -5,3 +5,5 @@ syntax on
 
 set nocompatible
 set number
+
+set term=screen-256color

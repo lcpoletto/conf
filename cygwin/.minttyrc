@@ -10,3 +10,4 @@ Columns=140
 Rows=30
 Scrollbar=none
 PgUpDnScroll=yes
+Term=xterm-256color

@@ -196,21 +196,4 @@
 # }
 # 
 # alias cd=cd_func
-
-# Start TMUX when starting Cygwin
-# [[ -z "$TMUX" ]] && exec tmux
-
-# Original Cygwin PS1: export PS1="\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ "
-export TERM=xterm-256color
-export PS1="\[\e[32m\][\[\e[33m\]\h\[\e[0m\]:\[\e[36m\]\w\[\e[32m\]]\[\e[0m\]\$ "
-
-export JAVA_HOME="/cygdrive/C/Program Files/Java/jdk1.8.0_74"
-export M2_HOME="/cygdrive/C/dev/tools/apache-maven-3.3.9"
-export MAVEN_HOME=$M2_HOME
-export PATH=$PATH:"$JAVA_HOME/bin":"$MAVEN_HOME/bin"
-
-# Use this on remote servers:
-# export PS1="\[\e[32m\][\[\e[34m\]\u\[\e[0m\]@\[\e[33m\]\h\[\e[0m\]:\[\e[36m\]\W\[\e[32m\]]\[\e[0m\]\$ "
-
-alias vi=vim
 alias ls="ls --color"

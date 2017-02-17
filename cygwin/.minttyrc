@@ -1,0 +1,12 @@
+BoldAsFont=-1
+ThemeFile=tango
+Transparency=high
+OpaqueWhenFocused=yes
+Font=DejaVu Sans Mono
+FontHeight=11
+FontSmoothing=full
+RightClickAction=paste
+Columns=140
+Rows=30
+Scrollbar=none
+PgUpDnScroll=yes

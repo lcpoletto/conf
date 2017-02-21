@@ -46,4 +46,7 @@ PS1+='\[\e[01;34m\]\$\[\e[00m\] ' # dollar sign
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 # source /usr/bin/virtualenvwrapper.sh
 
+#export GOROOT=/usr/lib/go
+export GOPATH=$HOME/dev/gorkspace
+export PATH=$PATH:$(go env GOPATH)/bin
 alias ls='ls --color=auto'

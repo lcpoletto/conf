@@ -58,4 +58,4 @@ let g:tagbar_type_go = {
     \ }
 
 " https://github.com/Shougo/neocomplete.vim
-let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_at_startup = 1

@@ -59,6 +59,13 @@ Show
     Class Currency
 
 #----------------------------------------------------
+# 0302 # LEAGUESTONES
+#----------------------------------------------------    
+Show
+    Class Leaguestone
+    PlayAlertSound 2 300
+
+#----------------------------------------------------
 # 0305 # DIVINATION CARD TIER LIST
 #----------------------------------------------------
 Show
@@ -95,6 +102,10 @@ Show
     SetBorderColor 200 200 200 220
     #SetFontSize 36
     PlayAlertSound 7 300
+    
+Show
+	Class Amulets
+	BaseType "Talisman"
     
 #----------------------------------------------------
 # 060d # BEST BASES

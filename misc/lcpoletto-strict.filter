@@ -64,6 +64,11 @@ Show
 Show
     Class Leaguestone
     PlayAlertSound 2 300
+    
+Show
+    Class "Misc Map Items"
+    BaseType "Ancient Reliquary Key"
+    PlayAlertSound 3 300
 
 #----------------------------------------------------
 # 0305 # DIVINATION CARD TIER LIST

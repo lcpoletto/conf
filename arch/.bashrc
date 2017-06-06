@@ -44,9 +44,10 @@ PS1+='\[\e[01;34m\]\$\[\e[00m\] ' # dollar sign
 
 # Disable default virtual env prompt so I can use mine
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-# source /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
-#export GOROOT=/usr/lib/go
-export GOPATH=$HOME/dev/gorkspace
-export PATH=$PATH:$(go env GOPATH)/bin
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/dev/workspaces/gorkspace
+export M2_HOME=$HOME/dev/tools/apache-maven-3.3.9
+export PATH=$PATH:$HOME/local:$(go env GOPATH)/bin:$M2_HOME/bin
 alias ls='ls --color=auto'

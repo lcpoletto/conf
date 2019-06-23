@@ -35,6 +35,10 @@ case ${TERM} in
         ;;
 esac
 
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+fi
+
 PS1+='\[\e[01;32m\]\u@\h' # user at host
 PS1+="\[\e[00;33m\]\$(git_branch)"
 PS1+="\[\e[00;31m\]\$(git_status)" # this function adds a trailing space
@@ -44,10 +48,12 @@ PS1+='\[\e[01;34m\]\$\[\e[00m\] ' # dollar sign
 
 # Disable default virtual env prompt so I can use mine
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-source /usr/bin/virtualenvwrapper.sh
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    . /usr/bin/virtualenvwrapper.sh
+fi
 
 export GOROOT=/usr/lib/go
-export GOPATH=$HOME/dev/workspaces/gorkspace
+export GOPATH=$HOME/dev/gorkspace
 export M2_HOME=$HOME/dev/tools/apache-maven-3.3.9
-export PATH=$PATH:$HOME/local:$(go env GOPATH)/bin:$M2_HOME/bin
+export PATH=$PATH:$HOME/local:$GOPATH/bin:$M2_HOME/bin
 alias ls='ls --color=auto'

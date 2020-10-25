@@ -11,6 +11,7 @@ function aws-profile() {
         echo -n "Available profiles:"
         echo $profiles | perl -pe "s/( |^)/\n  /g"
         unset AWS_DEFAULT_PROFILE AWS_PROFILE AWS_EB_PROFILE
+        kubectl config use-context docker-desktop
     else
         export AWS_DEFAULT_PROFILE="$1"
         export AWS_PROFILE="$1"
@@ -21,7 +22,6 @@ function aws-profile() {
 
 function aws-region() {
     export AWS_DEFAULT_REGION="$(aws configure get region)"
-    export AWS_REGION="${AWS_DEFAULT_REGION}"
 }
 
 function aws-env() {
@@ -47,16 +47,21 @@ function aws-env() {
     [ $secret ] && export AWS_SECRET_ACCESS_KEY="$secret"
     [ $token ] && export AWS_SESSION_TOKEN="$token" || unset AWS_SESSION_TOKEN
     # Hardcoded kubernetes cluster name below, should probably try a better way
-    [ $token ] && aws eks --region ${AWS_REGION} update-kubeconfig --name k8s_shared --alias ${AWS_PROFILE}
+    [ $token ] && aws eks update-kubeconfig --name k8s_shared --alias ${AWS_PROFILE}
+}
+
+function aws-current-profile() {
+    [ $AWS_PROFILE ] && echo "[aws:$AWS_PROFILE] " || echo "[aws:default] "
 }
 
 function node-env() {
     cpwd=$(PWD)
-    docker run -it --rm --entrypoint /bin/sh -p 0.0.0.0:3000:3000 -p 0.0.0.0:4000:4000 --name ${cpwd##*/} -v ${cpwd}:/opt/${cpwd##*/} -w /opt/${cpwd##*/} node:12.13.0-alpine
+    docker run -it --rm --entrypoint /bin/sh -p 0.0.0.0:3000:3000 -p 0.0.0.0:4000:4000 --name ${cpwd##*/} -v /var/run/docker.sock:/var/run/docker.sock -v ${cpwd}:/opt/${cpwd##*/} -w /opt/${cpwd##*/} node:12.13.0-alpine
 }
 
 git_branch() {
-    git branch --no-color 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    local result=$(git branch --show-current --no-color 2>/dev/null)
+    [ $result ] && echo " (git:$result)"
 }
 
 git_status() {
@@ -76,7 +81,7 @@ virtualenv_prompt() {
 kubelogs() {
     pod=$(kubectl get pods | grep "$1" | grep -v mysql | grep -v redis | grep -v mongo | cut -f 1 -d ' ' | sed -n ${2}p)
     echo "Showing logs for $pod."
-    kubectl logs $pod -f | grep --line-buffered -v '/healthcheck' | grep --line-buffered -v '/ready' | grep --line-buffered -v '/.well-known' | grep --line-buffered -v 'Server ready at' | jq
+    kubectl logs $pod -f | grep --line-buffered "$3" | grep --line-buffered -v '/healthcheck' | grep --line-buffered -v '/ready' | grep --line-buffered -v '/.well-known' | grep --line-buffered -v 'Server ready at' | jq -R 'fromjson? | select(type == "object")'
 }
 
 kubecontext() {
@@ -96,10 +101,6 @@ case ${TERM} in
         ;;
 esac
 
-# Bash Completion v2:
-#export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-#[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
 # Bash Completion V1:
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
@@ -114,10 +115,10 @@ if command -v helm >/dev/null 2>&1; then
 fi
 
 #PS1+='\[\e[01;32m\]\u@\h'                  # user at host
-PS1+='\[\e[01;32m\]\u'                     # user
+PS1+="\[\e[00;35m\]\$(aws-current-profile)"
+PS1+='\[\e[01;34m\]\w'                    # Current path
 PS1+="\[\e[00;33m\]\$(git_branch)"
 PS1+="\[\e[00;31m\]\$(git_status)"         # this function adds a trailing space
-PS1+='\[\e[01;34m\]\w '                    # Current path
 PS1+="\[\e[00;35m\]\$(virtualenv_prompt)"
 PS1+='\[\e[01;34m\]\$\[\e[00m\] '          # dollar sign
 
@@ -127,24 +128,14 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 #source "$USR_PYTHON/bin/virtualenvwrapper.sh"
 
-export AWS_DEFAULT_REGION="us-east-1"
-export AWS_DEFAULT_PROFILE="main"
-export AWS_REGION="$AWS_DEFAULT_REGION"
-
 export GOPATH=$HOME/dev/gorkspace
 export PATH="$PATH:$USR_PYTHON/bin:$HOME/.local:$GOPATH/bin"
-
-export HEROKU_CERTS="${HOME}/dev/golang/heroku-connect/heroku-certs"
-export HEROKU_CONNECT_DATABASE_URL="postgres://ec2-52-1-79-32.compute-1.amazonaws.com:5432/depflg524vvsco"
-export PGSSLCERT="${HEROKU_CERTS}/postgresql.crt"
-export PGSSLKEY="${HEROKU_CERTS}/postgresql.key"
-export PGSSLROOTCERT="${HEROKU_CERTS}/root.crt"
-launchctl setenv HEROKU_CONNECT_DATABASE_URL "${HEROKU_CONNECT_DATABASE_URL}"
-launchctl setenv PGSSLCERT "${PGSSLCERT}"
-launchctl setenv PGSSLKEY "${PGSSLKEY}"
-launchctl setenv PGSSLROOTCERT "${PGSSLROOTCERT}"
 
 alias ls="ls -G"
 alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
 alias ecr_login="aws ecr --region $AWS_REGION get-login --no-include-email | bash"
 alias kubelocal="kubectl config use-context docker-desktop"
+alias gounit="go test -cover -tags=unit -count=1 ./..."
+alias gocover="go test -coverprofile /tmp/cover.out -tags=unit -count=1 ./... && go tool cover -func /tmp/cover.out | grep 'total:' | awk '\$1=\$1'"
+
+[ -f $HOME/.bashrc_secure ] && . $HOME/.bashrc_secure

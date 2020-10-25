@@ -55,5 +55,5 @@ fi
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/dev/gorkspace
 export M2_HOME=$HOME/dev/tools/apache-maven-3.3.9
-export PATH=$PATH:$HOME/local:$GOPATH/bin:$M2_HOME/bin
+export PATH=$PATH:$HOME/.local/bin:$GOPATH/bin:$M2_HOME/bin
 alias ls='ls --color=auto'

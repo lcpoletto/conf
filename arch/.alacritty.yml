@@ -267,6 +267,36 @@ font:
   #
   #indexed_colors: []
 
+# Colors (Tangoesque)
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xaaaaaa'
+
+  # Normal colors
+  normal:
+    black:   '0x202020'
+    red:     '0xff6565'
+    green:   '0x93d44f'
+    yellow:  '0xeab93d'
+    blue:    '0x204a87'
+    magenta: '0xce5c00'
+    cyan:    '0x89b6e2'
+    white:   '0xcccccc'
+
+  # Bright colors
+  bright:
+    black:   '0x606060'
+    red:     '0xff8d8d'
+    green:   '0xc8e7a8'
+    yellow:  '0xffc123'
+    blue:    '0x3465a4'
+    magenta: '0xf57900'
+    cyan:    '0x46a4ff'
+    white:   '0xffffff'
+
+
 # Bell
 #
 # The bell is rung every time the BEL control character is received.

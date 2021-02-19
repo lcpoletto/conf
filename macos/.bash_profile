@@ -139,3 +139,4 @@ alias gounit="go test -cover -tags=unit -count=1 ./..."
 alias gocover="go test -coverprofile /tmp/cover.out -tags=unit -count=1 ./... && go tool cover -func /tmp/cover.out | grep 'total:' | awk '\$1=\$1'"
 
 [ -f $HOME/.bashrc_secure ] && . $HOME/.bashrc_secure
+export PATH="/usr/local/opt/terraform@0.12/bin:$PATH"

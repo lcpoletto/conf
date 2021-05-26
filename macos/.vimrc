@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 syntax on
 " use filetype detection and file-based indenting
 filetype plugin indent on
@@ -22,6 +20,7 @@ if exists(':term')
 endif
 
 set directory=~/.vim/swp " swap files directory
+set backspace=indent,eol,start " make backspace work like most other apps
 
 " use actual tabs for makefiles (they don't work with spaces)
 autocmd FileType make setlocal tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
